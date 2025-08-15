@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fresh Freight - Modern Minimal Interactive</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #24c781;
+      --accent: #30475e;
+      --bg: #f9feff;
+      --surface: #f5fcfa;
+      --shadow: 0 8px 24px rgba(34, 199, 129, 0.11);
+      --radius: 18px;
+      --max-width: 900px;
+      --spacing: 32px;
+      --highlight: #ffe984;
+      --transition: 0.3s cubic-bezier(.76,.12,.26,.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--accent);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.06em;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    header {
+      padding: 44px 0 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: var(--spacing);
+    }
+    .logo-img {
+      width: 160px;
+      height: auto;
+      object-fit: contain;
+    }
+    .underline-effect {
+      width: 68px;
+      height: 4px;
+      margin-top: 8px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--highlight) 100%);
+      border-radius: 10px;
+      animation: underlineSlide .7s .5s cubic-bezier(.76,.12,.26,.94) backwards;
+    }
+    @keyframes underlineSlide {
+      from {width: 0; opacity:0;}
+      to {width: 68px; opacity:1;}
+    }
+
+    /* MAIN LAYOUT */
+    main {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 0 24px;
+    }
+    section {
+      margin-bottom: var(--spacing);
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 22px 0 38px;
+      background: linear-gradient(105deg,#f3fff2 56%,#e8fbf1 100%);
+      border-radius: var(--radius);
+      box-shadow: 0 3px 24px #24c7811a;
+      animation: fade-in 1.2s ease;
+      position: relative;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: 3.1em;
+      margin-bottom: 11px;
+      background: linear-gradient(92deg, #24c781 60%, #53dbb9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 2.5s infinite alternate;
+    }
+    @keyframes textGlow {
+      from { text-shadow: 0 1px 10px #ffe98455; }
+      to   { text-shadow: 0 1px 18px #24c78149; }
+    }
+    .gradient-stripe {
+      width: 100%;
+      height: 14px;
+      background: linear-gradient(90deg, #ffe984 0%, #24c781 65%, #53dbb9 90%);
+      margin-bottom: 18px;
+      opacity: .7;
+    }
+
+    /* CAROUSEL */
+    .carousel {
+      font-size: 1.1rem;
+      font-weight: 600;
+      min-height: 60px;
+      max-width: 470px;
+      margin: auto;
+      position: relative;
+    }
+    .carousel-slide {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      transition: opacity 0.65s var(--transition);
+    }
+    .carousel-slide.active {
+      opacity: 1;
+      position: relative;
+      animation: fadeUpIn 0.66s ease forwards;
+    }
+    @keyframes fadeUpIn {
+      from { opacity: 0; transform: translateY(18px);}
+      to   { opacity: 1; transform: none;}
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+      border-left: 3px solid var(--primary);
+      box-shadow: 0 8px 32px #24c78114;
+    }
+
+    /* SERVICES */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px 15px;
+      width: 160px;
+      text-align: center;
+      box-shadow: 0 3px 18px #24c78113;
+      transition: all var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      border-left: 4px solid #53dbb9;
+    }
+    .card:hover {
+      transform: scale(1.06) rotate(-1deg);
+      border-left-color: var(--primary);
+      background: linear-gradient(101deg,#f9fff7 54%,#e4faea 95%);
+      box-shadow: 0 16px 36px #24c78133;
+    }
+    .icon {
+      font-size: clamp(2rem, 5vw, 2.4rem);
+      color: var(--primary);
+      transition: all var(--transition);
+    }
+    .card:hover .icon { color: #222; }
+    .card-title {
+      font-size: 1.03rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary) 70%, var(--highlight) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      .card { width: 45%; padding: 15px; }
+    }
+    @media (max-width: 480px) {
+      .card { width: 100%; }
+      .hero h1 { font-size: 2em; }
+      .logo-img { width: 120px; }
+    }
+
+    /* CUSTOM CONTACT FORM */
+    .contact-section-redesign {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      box-shadow: 0 8px 32px rgba(36,199,129,0.15);
+      max-width: 500px;
+      margin: auto;
+    }
+    .contact-section-redesign h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+    .contact-sub {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    form {
+      width: 100%;
+    }
+    .form-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 40px 14px 15px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.9);
+      font-size: 1rem;
+      resize: vertical;
+      transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    label {
+      position: absolute;
+      left: 15px;
+      top: 14px;
+      color: #666;
+      font-size: 0.95rem;
+      pointer-events: none;
+      transition: 0.3s ease;
+      background: transparent;
+    }
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:focus + label,
+    textarea:not(:placeholder-shown) + label {
+      top: -14px;
+      left: 10px;
+      font-size: 0.78rem;
+      background: var(--surface);
+      padding: 0 5px;
+      color: var(--primary);
+    }
+    .form-group .icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.12rem;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .send-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.07rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(90deg, var(--primary) 50%, var(--highlight) 100%);
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(36,199,129,0.18);
+    }
+    .send-btn:hover {
+      background: linear-gradient(90deg, #2d334a 10%, var(--primary) 60%, var(--highlight) 100%);
+      transform: translateY(-2px);
+    }
+    .form-feedback {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.96rem;
+      color: var(--primary);
+      min-height: 1.1em;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 18px;
+      color: #777;
+    }
+
+    /* SCROLL TOP BUTTON */
+    .scroll-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 24px;
+      background: linear-gradient(90deg,#ffe984 10%,#24c781 90%);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3em;
+      cursor: pointer;
+      z-index: 99;
+    }
+    .scroll-to-top.active { display: flex; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="fresh-freight-logo.png" alt="Fresh Freight Logo" class="logo-img" />
+  <div class="underline-effect"></div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="gradient-stripe"></div>
+    <h1>Brightening Global Trade</h1>
+    <div class="carousel">
+      <div class="carousel-slide active">Connecting growers and buyers with premium produce.</div>
+      <div class="carousel-slide">Speedy and reliable logistics for fruits and vegetables.</div>
+      <div class="carousel-slide">Committed to freshness, quality, and transparency.</div>
+      <div class="carousel-slide">Sustainable agricultural supply chains worldwide.</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p>Fresh Freight transforms international produce logistics — synchronizing sourcing, trade, and transport for perfect freshness across borders.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 style="text-align:center; font-weight:600; color: var(--primary);">Our Services</h2>
+    <div class="cards">
+      <div class="card"><div class="icon">🌍</div><div class="card-title">Global Sourcing</div></div>
+      <div class="card"><div class="icon">🍇🍅</div><div class="card-title">Fresh Produce Supply</div></div>
+      <div class="card"><div class="icon">🥫</div><div class="card-title">Packaged Goods</div></div>
+      <div class="card"><div class="icon">✅</div><div class="card-title">Quality Control</div></div>
+    </div>
+  </section>
+
+  <!-- CUSTOM CONTACT FORM -->
+  <section id="contact">
+    <div class="contact-section-redesign">
+      <h2>📬 Let's Connect</h2>
+      <p class="contact-sub">Got a question or need a quote? Drop us a message!</p>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder=" " required />
+          <label for="name">Full Name</label>
+          <span class="icon">👤</span>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder=" " required />
+          <label for="email">Email Address</label>
+          <span class="icon">✉️</span>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+          <label for="message">Your Message</label>
+          <span class="icon">💬</span>
+        </div>
+        <button type="submit" class="send-btn">Send Message ✈️</button>
+        <p class="form-feedback" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; 2025 Fresh Freight. All rights reserved.</footer>
+
+<button class="scroll-to-top" id="scrollTopBtn" aria-label="Scroll to top">&#8679;</button>
+
+<script>
+  // Carousel
+  const slides = document.querySelectorAll('.carousel-slide');
+  let current = 0;
+  const intervalTime = 4400;
+  let interval = setInterval(nextSlide, intervalTime);
+  function showSlide(index) { slides.forEach((s, i) => s.classList.toggle('active', i === index)); }
+  function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
+  document.querySelector('.carousel').addEventListener('mouseenter', () => clearInterval(interval));
+  document.querySelector('.carousel').addEventListener('mouseleave', () => interval = setInterval(nextSlide, intervalTime));
+
+  // Contact form submission
+  const form = document.getElementById('contactForm');
+  const feedback = form.querySelector('.form-feedback');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      feedback.style.color = 'red';
+      feedback.textContent = '⚠️ Please fill in all fields correctly.';
+      return;
+    }
+
+    // Here you can add your backend API call or email service integration
+
+    feedback.style.color = 'var(--primary)';
+    feedback.textContent = `✅ Thank you, ${form.name.value.trim()}! Your message has been sent.`;
+    form.reset();
+
+    setTimeout(() => {
+      feedback.textContent = '';
+    }, 4000);
+  });
+
+  // Scroll to top button
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('active', window.scrollY > 160);
+  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
