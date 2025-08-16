@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fresh Freight | Connecting Farms to the World</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -291,12 +294,60 @@
       font-weight: 600;
     }
 
+    /* CONTACT INFO BOX */
+    .contact-info-box {
+      background: var(--surface);
+      max-width: 420px;
+      margin: 40px auto 0;
+      padding: 22px 28px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 24px rgba(36, 199, 129, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      font-size: 1.05rem;
+      color: var(--accent);
+      transition: box-shadow 0.3s ease;
+    }
+    .contact-info-box:hover {
+      box-shadow: 0 10px 38px rgba(36, 199, 129, 0.22);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-icon {
+      font-size: 1.4rem;
+      color: var(--primary);
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .contact-link {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+    .contact-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    @media (max-width: 480px) {
+      .contact-info-box {
+        margin: 32px 16px 0;
+        padding: 18px 22px;
+        font-size: 1rem;
+      }
+    }
+
     /* FOOTER */
     footer {
       text-align: center;
       font-size: 0.9rem;
       padding: 18px;
       color: #777;
+      margin-top: 26px;
     }
 
     /* SCROLL TOP BUTTON */
@@ -378,6 +429,22 @@
         <button type="submit" class="send-btn">Send Message ✈️</button>
         <p class="form-feedback" aria-live="polite"></p>
       </form>
+    </div>
+  </section>
+
+  <!-- CONTACT INFO BOX -->
+  <section class="contact-info-box" aria-label="Contact Information">
+    <div class="contact-item">
+      <span class="contact-icon" aria-hidden="true">🏢</span>
+      <span>8/572, Pakara, Tanalur, Kerala-676307</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-icon" aria-hidden="true">📞</span>
+      <a class="contact-link" href="tel:+12345678901">+919746998363</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-icon" aria-hidden="true">✉️</span>
+      <a class="contact-link" href="mailto:contact@freshfreight.in">contact@freshfreight.in</a>
     </div>
   </section>
 </main>
