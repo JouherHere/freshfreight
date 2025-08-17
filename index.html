@@ -84,7 +84,7 @@
       font-size: 1.17em;
       color: var(--accent);
       min-height: 3.6em;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       position: relative;
       overflow: hidden;
       padding: 0 10px;
@@ -102,16 +102,18 @@
       opacity: 1;
       position: relative;
     }
+    .underline-below-carousel {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, #ffe984 100%);
+      border-radius: 10px;
+      margin: 0 auto 10px;
+      animation: underlineSlide 0.8s cubic-bezier(.76,.12,.26,.94) forwards;
+    }
     #about {
       display: none;
     }
     /* SERVICES */
-    #services h2 {
-      text-align: center;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 14px;
-    }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -267,6 +269,7 @@
 <main>
   <!-- HERO -->
   <section class="hero" id="home">
+
     <h1>Brightening Global Trade</h1>
     <div class="carousel-text" aria-live="polite" aria-atomic="true">
       <div class="carousel-slide active">Connecting growers and buyers with premium produce.</div>
@@ -276,14 +279,14 @@
       <div class="carousel-slide">Tailored solutions for global agricultural trade.</div>
       <div class="carousel-slide">Freshness guaranteed from farm to your doorstep.</div>
     </div>
+    <div class="underline-below-carousel"></div>
   </section>
 
   <!-- ABOUT - hidden -->
   <section id="about"></section>
 
-  <!-- SERVICES with header -->
+  <!-- SERVICES - no heading as requested -->
   <section id="services">
-    <h2>Our Services</h2>
     <div class="services-grid">
       <article class="service-card" tabindex="0">
         <h3>Global Sourcing</h3>
