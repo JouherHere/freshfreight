@@ -102,17 +102,26 @@
       opacity: 1;
       position: relative;
     }
+
+    /* ==== NEW ANIMATION for carousel underline ==== */
+    @keyframes underlinePulse {
+      0% { transform: scaleX(0.4); opacity: 0; }
+      50% { transform: scaleX(1.1); opacity: 1; }
+      100% { transform: scaleX(1); opacity: 1; }
+    }
+
     .underline-below-carousel {
       width: 80px;
       height: 4px;
       background: linear-gradient(90deg, var(--primary) 0%, #ffe984 100%);
       border-radius: 10px;
       margin: 0 auto 10px;
-      animation: underlineSlide 0.8s cubic-bezier(.76,.12,.26,.94) forwards;
+      transform-origin: center;
+      animation: underlinePulse 1s ease-out forwards;
     }
-    #about {
-      display: none;
-    }
+
+    #about { display: none; }
+
     /* SERVICES */
     .services-grid {
       display: grid;
@@ -138,14 +147,12 @@
       touch-action: manipulation;
       user-select: none;
     }
-    /* Hover and focus effect */
     .service-card:hover,
     .service-card:focus,
     .service-card.touch-active {
       box-shadow: 0 12px 40px rgba(36, 199, 129, 0.28);
       transform: translateY(-6px);
     }
-    /* Click effect */
     .service-card:active {
       transform: scale(1.04);
       box-shadow: 0 12px 40px rgba(36, 199, 129, 0.38);
@@ -174,6 +181,7 @@
         max-width: 100%;
       }
     }
+
     /* CONTACT */
     #contact {
       background: rgba(255,255,255,0.85);
@@ -224,8 +232,16 @@
       border-radius: 9px;
       background: rgba(255,255,255,0.97);
       font-size: 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       resize: vertical;
       transition: all 0.3s ease;
+      color: var(--accent);
+    }
+    input::placeholder,
+    textarea::placeholder {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #777;
+      opacity: 1;
     }
     input:focus, textarea:focus {
       border-color: var(--primary);
@@ -238,6 +254,7 @@
       padding: 13px;
       font-size: 1.1rem;
       font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: white;
       background: linear-gradient(90deg, var(--primary) 50%, #ffe984 100%);
       border-radius: var(--radius);
@@ -250,7 +267,6 @@
     button[type="submit"]:hover {
       background: linear-gradient(90deg, #2d334a 10%, var(--primary) 60%, #ffe984 100%);
     }
-    /* FOOTER */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -269,7 +285,6 @@
 <main>
   <!-- HERO -->
   <section class="hero" id="home">
-
     <h1>Brightening Global Trade</h1>
     <div class="carousel-text" aria-live="polite" aria-atomic="true">
       <div class="carousel-slide active">Connecting growers and buyers with premium produce.</div>
@@ -282,10 +297,10 @@
     <div class="underline-below-carousel"></div>
   </section>
 
-  <!-- ABOUT - hidden -->
+  <!-- ABOUT -->
   <section id="about"></section>
 
-  <!-- SERVICES - no heading as requested -->
+  <!-- SERVICES -->
   <section id="services">
     <div class="services-grid">
       <article class="service-card" tabindex="0">
@@ -342,10 +357,17 @@
     const intervalTime = 4500;
     let interval;
 
+    const underline = document.querySelector('.underline-below-carousel');
+
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
       });
+
+      // restart underline animation on each slide change
+      underline.style.animation = 'none';
+      underline.offsetHeight; // force reflow
+      underline.style.animation = 'underlinePulse 1s ease-out forwards';
     }
 
     function nextSlide() {
@@ -363,8 +385,6 @@
 
     document.querySelector('.carousel-text').addEventListener('mouseenter', stopCarousel);
     document.querySelector('.carousel-text').addEventListener('mouseleave', startCarousel);
-
-    // Touch support for carousel pause on mobile
     document.querySelector('.carousel-text').addEventListener('touchstart', stopCarousel);
     document.querySelector('.carousel-text').addEventListener('touchend', startCarousel);
 
