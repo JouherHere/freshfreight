@@ -91,18 +91,15 @@
       padding: 0 10px;
       box-sizing: border-box;
     }
-    .carousel-slide {
-      opacity: 0;
-      position: absolute;
-      width: 100%;
-      left: 0;
-      top: 0;
-      transition: opacity 0.65s ease-in-out;
-    }
-    .carousel-slide.active {
-      opacity: 1;
-      position: relative;
-    }
+.carousel-slide {
+  display: none;
+}
+.carousel-slide.active {
+  display: block;
+  position: relative;
+}
+
+
 
     /* ==== NEW ANIMATION for carousel underline ==== */
     @keyframes underlinePulse {
@@ -112,15 +109,14 @@
     }
 
     .underline-below-carousel {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #007bff 0%, #24c781 100%);
-  border-radius: 10px;
-  margin: 0 auto 10px;
-  transform-origin: center;
-  animation: underlinePulse 1s ease-out forwards;
-}
-
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #007bff 0%, #24c781 100%);
+      border-radius: 10px;
+      margin: 0 auto 10px;
+      transform-origin: center;
+      animation: underlinePulse 1s ease-out forwards;
+    }
 
     #about { display: none; }
 
@@ -320,6 +316,12 @@
         <h3>Fresh Produce Supply</h3>
         <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
       </article>
+
+        <article class="service-card" tabindex="0">
+        <h3>Meat, Dairy & Seafood</h3>
+        <p>Safe, fresh, and reliable supply of meat, dairy, and seafood products.</p>
+      </article>
+
       <article class="service-card" tabindex="0">
         <h3>Packaged Goods</h3>
         <p>Export-ready packaged items for diverse international markets.</p>
@@ -328,10 +330,8 @@
         <h3>Custom Logistics Solutions</h3>
         <p>Tailored transport and handling for unique produce and delivery needs.</p>
       </article>
-      <article class="service-card" tabindex="0">
-        <h3>Cold Chain Management</h3>
-        <p>State-of-the-art refrigerating and monitoring for temperature-sensitive products.</p>
-      </article>
+    
+    
     </div>
   </section>
 
