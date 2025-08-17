@@ -27,16 +27,36 @@
       scroll-behavior: smooth;
     }
     header {
-      padding: 44px 0 16px;
+      padding: 44px 0 24px 0;
       background: var(--surface);
       box-shadow: var(--shadow);
       text-align: center;
       margin-bottom: var(--spacing);
+      position: relative;
     }
     .logo-img {
       width: 160px;
       height: auto;
       object-fit: contain;
+    }
+    /* Animated underline below logo */
+    .logo-underline {
+      width: 68px;
+      height: 4px;
+      margin: 12px auto 0;
+      background: linear-gradient(90deg, var(--primary) 0%, #ffe984 100%);
+      border-radius: 10px;
+      animation: underlineSlide 0.8s cubic-bezier(.76,.12,.26,.94) forwards;
+    }
+    @keyframes underlineSlide {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: 68px;
+        opacity: 1;
+      }
     }
     main {
       max-width: var(--max-width);
@@ -85,7 +105,13 @@
     #about {
       display: none;
     }
-    /* SERVICES - Minimalist, no icons */
+    /* SERVICES */
+    #services h2 {
+      text-align: center;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
     .services-list {
       display: flex;
       flex-wrap: wrap;
@@ -105,50 +131,42 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      opacity: 0; /* Start hidden for animation */
-      animation-fill-mode: forwards;
-      animation-name: fadeUp;
-      animation-duration: 0.65s;
-      animation-timing-function: ease-out;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      user-select: none;
     }
-    /* Stagger animation delays */
-    .service-item:nth-child(1) { animation-delay: 0.1s; }
-    .service-item:nth-child(2) { animation-delay: 0.25s; }
-    .service-item:nth-child(3) { animation-delay: 0.4s; }
-    .service-item:nth-child(4) { animation-delay: 0.55s; }
-    .service-item:nth-child(5) { animation-delay: 0.7s; }
-    .service-item:nth-child(6) { animation-delay: 0.85s; }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Hover effect */
+    .service-item:hover {
+      transform: scale(1.06);
+      border-left-color: var(--primary);
+      box-shadow: 0 8px 30px rgba(36, 199, 129, 0.3);
+    }
+    /* Click effect */
+    .service-item:active {
+      transform: scale(1.04);
+      border-left-color: #1fa563;
+      box-shadow: 0 8px 30px rgba(36, 199, 129, 0.45);
     }
     .service-item h3 {
-      margin:0 0 12px;
+      margin: 0 0 12px;
       color: var(--primary);
       font-size: 1.16rem;
       font-weight: 700;
     }
     .service-item p {
-      margin:0;
+      margin: 0;
       color: var(--accent);
       font-size: 1em;
     }
-    @media(max-width:700px) {
-      .services-list { gap:20px; }
-      .service-item { min-width:160px; max-width:100%; padding:18px 12px; }
-      header { padding:20px 0 10px;}
+    @media (max-width:700px) {
+      .services-list { gap: 20px; }
+      .service-item { min-width: 160px; max-width: 100%; padding: 18px 12px; }
+      header { padding: 20px 0 20px 0; }
     }
-    @media(max-width:480px) {
+    @media (max-width:480px) {
       main { padding: 0 10px; }
-      .service-item { min-width:100%; }
-      .logo-img { width:120px; }
+      .service-item { min-width: 100%; }
+      .logo-img { width: 120px; }
       .hero h1 { font-size: 1.55em; }
     }
     /* CONTACT */
@@ -173,12 +191,12 @@
       margin-bottom: 18px;
     }
     .contact-info {
-      margin-top:24px;
-      font-size:1.02em;
-      color:var(--accent);
-      border-top:1px solid #e0e7ef;
-      padding-top:14px;
-      text-align:left;
+      margin-top: 24px;
+      font-size: 1.02em;
+      color: var(--accent);
+      border-top: 1px solid #e0e7ef;
+      padding-top: 14px;
+      text-align: left;
     }
     .contact-info a {
       color: var(--accent);
@@ -186,9 +204,9 @@
       font-weight: 600;
       transition: color 0.25s;
     }
-    .contact-info a:hover { color: var(--primary);}
+    .contact-info a:hover { color: var(--primary); }
     form {
-      width:100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 13px;
@@ -211,15 +229,15 @@
       box-shadow: 0 0 6px var(--primary);
     }
     button[type="submit"] {
-      width:100%;
-      padding:13px;
-      font-size:1.1rem;
-      font-weight:700;
-      color:white;
+      width: 100%;
+      padding: 13px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
       background: linear-gradient(90deg, var(--primary) 50%, #ffe984 100%);
       border-radius: var(--radius);
-      border:none;
-      cursor:pointer;
+      border: none;
+      cursor: pointer;
       transition: background 0.3s;
       box-shadow: 0 4px 14px rgba(36,199,129,0.18);
       margin-top: 6px;
@@ -229,17 +247,18 @@
     }
     /* FOOTER */
     footer {
-      text-align:center;
-      font-size:0.9rem;
-      padding:18px;
-      color:#777;
-      margin-top:24px;
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 18px;
+      color: #777;
+      margin-top: 24px;
     }
   </style>
 </head>
 <body>
 <header>
   <img src="fresh-freight-logo.png" alt="Fresh Freight Logo" class="logo-img" />
+  <div class="logo-underline"></div>
 </header>
 
 <main>
@@ -259,30 +278,31 @@
   <!-- ABOUT - hidden -->
   <section id="about"></section>
 
-  <!-- SERVICES -->
+  <!-- SERVICES with header -->
   <section id="services">
+    <h2>Our Services</h2>
     <div class="services-list">
-      <div class="service-item">
+      <div class="service-item" tabindex="0">
         <h3>Global Sourcing</h3>
         <p>We connect with trusted growers worldwide for premium produce.</p>
       </div>
-      <div class="service-item">
+      <div class="service-item" tabindex="0">
         <h3>Quality Monitoring</h3>
         <p>We ensure produce meets rigorous freshness and quality standards.</p>
       </div>
-      <div class="service-item">
+      <div class="service-item" tabindex="0">
         <h3>Fresh Produce Supply</h3>
         <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
       </div>
-      <div class="service-item">
+      <div class="service-item" tabindex="0">
         <h3>Packaged Goods</h3>
         <p>Export-ready packaged items for diverse international markets.</p>
       </div>
-      <div class="service-item">
+      <div class="service-item" tabindex="0">
         <h3>Custom Logistics Solutions</h3>
         <p>Tailored transport and handling for unique produce and delivery needs.</p>
       </div>
-      <div class="service-item">
+      <div class="service-item" tabindex="0">
         <h3>Cold Chain Management</h3>
         <p>State-of-the-art refrigerating and monitoring for temperature-sensitive products.</p>
       </div>
