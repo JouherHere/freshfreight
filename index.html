@@ -92,11 +92,17 @@
     }
     .carousel-slide {
       display: none;
-      position: relative;
+      position: absolute;
       width: 100%;
+      left: 0;
+      top: 0;
+      transition: opacity 0.65s ease-in-out;
+      opacity: 0;
     }
     .carousel-slide.active {
       display: block;
+      position: relative;
+      opacity: 1;
     }
     .underline-below-carousel {
       width: 80px;
@@ -113,6 +119,8 @@
       100% { transform: scaleX(1); opacity: 1; }
     }
     #about { display: none; }
+
+    /* Services Grid & Cards */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -136,6 +144,16 @@
       outline: none;
       touch-action: manipulation;
       user-select: none;
+
+      /* Start hidden & downscaled for animation */
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    /* Animate-in class triggers the fade-up and scale effect */
+    .service-card.animate-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
     }
     .service-card:hover,
     .service-card:focus,
@@ -313,10 +331,6 @@
           <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
         </article>
         <article class="service-card" tabindex="0">
-          <h3>Meat, Dairy & Seafood</h3>
-          <p>Safe, fresh, and reliable supply of meat, dairy, and seafood products.</p>
-        </article>
-        <article class="service-card" tabindex="0">
           <h3>Packaged Goods</h3>
           <p>Export-ready packaged items for diverse international markets.</p>
         </article>
@@ -324,7 +338,10 @@
           <h3>Custom Logistics Solutions</h3>
           <p>Tailored transport and handling for unique produce and delivery needs.</p>
         </article>
-
+        <article class="service-card" tabindex="0">
+          <h3>Meat, Dairy & Seafood</h3>
+          <p>Safe, fresh, and reliable supply of meat, dairy, and seafood products.</p>
+        </article>
       </div>
     </section>
 
@@ -360,9 +377,8 @@
         slides.forEach((slide, i) => {
           slide.classList.toggle('active', i === index);
         });
-        // Restart underline pulse animation
         underline.style.animation = 'none';
-        underline.offsetHeight; // Trigger reflow
+        underline.offsetHeight;
         underline.style.animation = 'underlinePulse 1s ease-out forwards';
       }
       function nextSlide() {
@@ -386,6 +402,22 @@
       startCarousel();
     })();
 
+    // Animate services on scroll for fade & scale effect
+    function animateServicesOnScroll() {
+      const serviceCards = document.querySelectorAll('.service-card');
+      const windowHeight = window.innerHeight;
+      const revealPoint = 150;
+      serviceCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < windowHeight - revealPoint) {
+          card.classList.add('animate-in');
+        }
+      });
+    }
+    window.addEventListener('scroll', animateServicesOnScroll);
+    window.addEventListener('load', animateServicesOnScroll);
+
+    // WhatsApp sending functionality
     document.getElementById('sendWhatsapp').onclick = function () {
       var name = encodeURIComponent(document.getElementById('name').value.trim());
       var email = encodeURIComponent(document.getElementById('email').value.trim());
