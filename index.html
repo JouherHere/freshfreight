@@ -144,17 +144,8 @@
       outline: none;
       touch-action: manipulation;
       user-select: none;
-
-      /* Start hidden & downscaled for animation */
-      opacity: 0;
-      transform: translateY(30px) scale(0.95);
     }
-    /* Animate-in class triggers the fade-up and scale effect */
-    .service-card.animate-in {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-    }
+    /* Hover and touch active effect */
     .service-card:hover,
     .service-card:focus,
     .service-card.touch-active {
@@ -402,20 +393,20 @@
       startCarousel();
     })();
 
-    // Animate services on scroll for fade & scale effect
-    function animateServicesOnScroll() {
-      const serviceCards = document.querySelectorAll('.service-card');
-      const windowHeight = window.innerHeight;
-      const revealPoint = 150;
-      serviceCards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if (cardTop < windowHeight - revealPoint) {
-          card.classList.add('animate-in');
-        }
+    // Touch-active class toggle on service cards for mobile tap visual feedback
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('touchstart', () => {
+        card.classList.add('touch-active');
       });
-    }
-    window.addEventListener('scroll', animateServicesOnScroll);
-    window.addEventListener('load', animateServicesOnScroll);
+      card.addEventListener('touchend', () => {
+        setTimeout(() => {
+          card.classList.remove('touch-active');
+        }, 300);
+      });
+      card.addEventListener('touchcancel', () => {
+        card.classList.remove('touch-active');
+      });
+    });
 
     // WhatsApp sending functionality
     document.getElementById('sendWhatsapp').onclick = function () {
