@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fresh Freight | Connecting Farms to the World</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <style>
     :root {
       --primary: #24c781;
@@ -40,7 +40,6 @@
       height: auto;
       object-fit: contain;
     }
-    /* Animated underline below logo */
     .logo-underline {
       width: 68px;
       height: 4px;
@@ -91,23 +90,14 @@
       padding: 0 10px;
       box-sizing: border-box;
     }
-.carousel-slide {
-  display: none;
-}
-.carousel-slide.active {
-  display: block;
-  position: relative;
-}
-
-
-
-    /* ==== NEW ANIMATION for carousel underline ==== */
-    @keyframes underlinePulse {
-      0% { transform: scaleX(0.4); opacity: 0; }
-      50% { transform: scaleX(1.1); opacity: 1; }
-      100% { transform: scaleX(1); opacity: 1; }
+    .carousel-slide {
+      display: none;
+      position: relative;
+      width: 100%;
     }
-
+    .carousel-slide.active {
+      display: block;
+    }
     .underline-below-carousel {
       width: 80px;
       height: 4px;
@@ -117,10 +107,12 @@
       transform-origin: center;
       animation: underlinePulse 1s ease-out forwards;
     }
-
+    @keyframes underlinePulse {
+      0% { transform: scaleX(0.4); opacity: 0; }
+      50% { transform: scaleX(1.1); opacity: 1; }
+      100% { transform: scaleX(1); opacity: 1; }
+    }
     #about { display: none; }
-
-    /* SERVICES */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -179,8 +171,6 @@
         max-width: 100%;
       }
     }
-
-    /* CONTACT */
     #contact {
       background: rgba(255,255,255,0.85);
       border-radius: var(--radius);
@@ -215,7 +205,9 @@
       font-weight: 600;
       transition: color 0.25s;
     }
-    .contact-info a:hover { color: var(--primary); }
+    .contact-info a:hover {
+      color: var(--primary);
+    }
     form {
       width: 100%;
       display: flex;
@@ -223,12 +215,13 @@
       gap: 13px;
       margin-bottom: 2px;
     }
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
       padding: 12px 12px;
       border: 2px solid #e0e7ef;
       border-radius: 9px;
-      background: rgba(255,255,255,0.97);
+      background: rgba(255, 255, 255, 0.97);
       font-size: 1rem;
       font-family: 'Plus Jakarta Sans', sans-serif;
       resize: vertical;
@@ -241,13 +234,15 @@
       color: #777;
       opacity: 1;
     }
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus {
       border-color: var(--primary);
       background: #fff;
       outline: none;
       box-shadow: 0 0 6px var(--primary);
     }
-    button[type="submit"] {
+    button[type='button'],
+    button[type='submit'] {
       width: 100%;
       padding: 13px;
       font-size: 1.1rem;
@@ -259,10 +254,11 @@
       border: none;
       cursor: pointer;
       transition: background 0.3s;
-      box-shadow: 0 4px 14px rgba(36,199,129,0.18);
+      box-shadow: 0 4px 14px rgba(36, 199, 129, 0.18);
       margin-top: 6px;
     }
-    button[type="submit"]:hover {
+    button[type='button']:hover,
+    button[type='submit']:hover {
       background: linear-gradient(90deg, #2d334a 10%, var(--primary) 60%, #ffe984 100%);
     }
     footer {
@@ -275,143 +271,141 @@
   </style>
 </head>
 <body>
-<header>
-  <img src="fresh-freight-logo.png" alt="Fresh Freight Logo" class="logo-img" />
-  <div class="logo-underline"></div>
-</header>
+  <header>
+    <img src="fresh-freight-logo.png" alt="Fresh Freight Logo" class="logo-img" />
+    <div class="logo-underline"></div>
+  </header>
 
-<main>
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <h1>Brightening Global Trade</h1>
-    <div class="carousel-text" aria-live="polite" aria-atomic="true">
-      <div class="carousel-slide active">Connecting growers and buyers with premium produce.</div>
-      <div class="carousel-slide">Speedy and reliable logistics for fruits and vegetables.</div>
-      <div class="carousel-slide">Committed to freshness, quality, and transparency.</div>
-      <div class="carousel-slide">Sustainable agricultural supply chains worldwide.</div>
-      <div class="carousel-slide">Tailored solutions for global agricultural trade.</div>
-      <div class="carousel-slide">Harvesting trust, delivering quality.</div>
-      <div class="carousel-slide">Bridging farms and markets seamlessly.</div>
-      <div class="carousel-slide">Empowering farmers, delighting buyers.</div>
-      <div class="carousel-slide">Seamless supply for perishable excellence.</div>
-    </div>
-    <div class="underline-below-carousel"></div>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <h1>Brightening Global Trade</h1>
+      <div class="carousel-text" aria-live="polite" aria-atomic="true">
+        <div class="carousel-slide active">Connecting growers and buyers with premium produce.</div>
+        <div class="carousel-slide">Speedy and reliable logistics for fruits and vegetables.</div>
+        <div class="carousel-slide">Committed to freshness, quality, and transparency.</div>
+        <div class="carousel-slide">Sustainable agricultural supply chains worldwide.</div>
+        <div class="carousel-slide">Tailored solutions for global agricultural trade.</div>
+        <div class="carousel-slide">Harvesting trust, delivering quality.</div>
+        <div class="carousel-slide">Bridging farms and markets seamlessly.</div>
+        <div class="carousel-slide">Empowering farmers, delighting buyers.</div>
+        <div class="carousel-slide">Seamless supply for perishable excellence.</div>
+      </div>
+      <div class="underline-below-carousel"></div>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about"></section>
+    <!-- ABOUT -->
+    <section id="about"></section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="services-grid">
-      <article class="service-card" tabindex="0">
-        <h3>Global Sourcing</h3>
-        <p>We connect with trusted growers worldwide for premium produce.</p>
-      </article>
-      <article class="service-card" tabindex="0">
-        <h3>Quality Monitoring</h3>
-        <p>We ensure produce meets rigorous freshness and quality standards.</p>
-      </article>
-      <article class="service-card" tabindex="0">
-        <h3>Fresh Produce Supply</h3>
-        <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
-      </article>
-
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="services-grid">
         <article class="service-card" tabindex="0">
-        <h3>Meat, Dairy & Seafood</h3>
-        <p>Safe, fresh, and reliable supply of meat, dairy, and seafood products.</p>
-      </article>
+          <h3>Global Sourcing</h3>
+          <p>We connect with trusted growers worldwide for premium produce.</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <h3>Quality Monitoring</h3>
+          <p>We ensure produce meets rigorous freshness and quality standards.</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <h3>Fresh Produce Supply</h3>
+          <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <h3>Meat, Dairy & Seafood</h3>
+          <p>Safe, fresh, and reliable supply of meat, dairy, and seafood products.</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <h3>Packaged Goods</h3>
+          <p>Export-ready packaged items for diverse international markets.</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <h3>Custom Logistics Solutions</h3>
+          <p>Tailored transport and handling for unique produce and delivery needs.</p>
+        </article>
 
-      <article class="service-card" tabindex="0">
-        <h3>Packaged Goods</h3>
-        <p>Export-ready packaged items for diverse international markets.</p>
-      </article>
-      <article class="service-card" tabindex="0">
-        <h3>Custom Logistics Solutions</h3>
-        <p>Tailored transport and handling for unique produce and delivery needs.</p>
-      </article>
-    
-    
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Let’s Connect</h2>
-    <p>Got a question or need a quote? Send us a message below.</p>
-    <form id="contactForm" novalidate>
-      <input type="text" id="name" name="name" placeholder="Full Name" required />
-      <input type="email" id="email" name="email" placeholder="Email Address" required />
-      <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <div class="contact-info">
-      <div>🏢 8/572, Pakara, Tanalur, Kerala-676307</div>
-      <div>📞 <a href="tel:+919746998363">(+91)9746998363</a></div>
-      <div>✉️ <a href="mailto:contact@freshfreight.in">contact@freshfreight.in</a></div>
-    </div>
-  </section>
-</main>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Let’s Connect</h2>
+      <p>Got a question or need a quote? Send us a message below.</p>
+      <form id="contactForm" onsubmit="return false;">
+        <input type="text" id="name" name="name" placeholder="Full Name" required />
+        <input type="email" id="email" name="email" placeholder="Email Address" required />
+        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="button" id="sendWhatsapp">Send via WhatsApp</button>
+      </form>
+      <div class="contact-info">
+        <div>🏢 8/572, Pakara, Tanalur, Kerala-676307</div>
+        <div>📞 <a href="tel:+919746998363">(+91)9746998363</a></div>
+        <div>✉️ <a href="mailto:contact@freshfreight.in">contact@freshfreight.in</a></div>
+      </div>
+    </section>
+  </main>
 
-<footer>&copy; 2025 Fresh Freight. All Rights Reserved.</footer>
+  <footer>&copy; 2025 Fresh Freight. All Rights Reserved.</footer>
 
-<script>
-  (function() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    let currentIndex = 0;
-    const intervalTime = 5000;
-    let interval;
+  <script>
+    (function () {
+      const slides = document.querySelectorAll('.carousel-slide');
+      let currentIndex = 0;
+      const intervalTime = 5000;
+      let interval;
+      const underline = document.querySelector('.underline-below-carousel');
 
-    const underline = document.querySelector('.underline-below-carousel');
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+        // Restart underline pulse animation
+        underline.style.animation = 'none';
+        underline.offsetHeight; // Trigger reflow
+        underline.style.animation = 'underlinePulse 1s ease-out forwards';
+      }
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      }
+      function startCarousel() {
+        interval = setInterval(nextSlide, intervalTime);
+      }
+      function stopCarousel() {
+        clearInterval(interval);
+      }
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
+      const carouselText = document.querySelector('.carousel-text');
+      carouselText.addEventListener('mouseenter', stopCarousel);
+      carouselText.addEventListener('mouseleave', startCarousel);
+      carouselText.addEventListener('touchstart', stopCarousel);
+      carouselText.addEventListener('touchend', startCarousel);
 
-      // restart underline animation on each slide change
-      underline.style.animation = 'none';
-      underline.offsetHeight; // force reflow
-      underline.style.animation = 'underlinePulse 1s ease-out forwards';
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
-    }
+      startCarousel();
+    })();
 
-    function startCarousel() {
-      interval = setInterval(nextSlide, intervalTime);
-    }
+    document.getElementById('sendWhatsapp').onclick = function () {
+      var name = encodeURIComponent(document.getElementById('name').value.trim());
+      var email = encodeURIComponent(document.getElementById('email').value.trim());
+      var message = encodeURIComponent(document.getElementById('message').value.trim());
 
-    function stopCarousel() {
-      clearInterval(interval);
-    }
+      if (!name || !email || !message) {
+        alert('Please fill in all fields before sending.');
+        return;
+      }
 
-    document.querySelector('.carousel-text').addEventListener('mouseenter', stopCarousel);
-    document.querySelector('.carousel-text').addEventListener('mouseleave', startCarousel);
-    document.querySelector('.carousel-text').addEventListener('touchstart', stopCarousel);
-    document.querySelector('.carousel-text').addEventListener('touchend', startCarousel);
+      var whatsappMsg =
+        'Name: ' + name + '%0A' +
+        'Email: ' + email + '%0A' +
+        'Message: ' + message;
 
-    // Initialize
-    showSlide(currentIndex);
-    startCarousel();
-  })();
+      var whatsappNumber = '919746998363';
+      var url = 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMsg;
 
-  // Add touch-active class on mobile tap for service cards
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('touchstart', () => {
-      card.classList.add('touch-active');
-    });
-    card.addEventListener('touchend', () => {
-      setTimeout(() => {
-        card.classList.remove('touch-active');
-      }, 300);
-    });
-    card.addEventListener('touchcancel', () => {
-      card.classList.remove('touch-active');
-    });
-  });
-</script>
+      window.open(url, '_blank');
+    };
+  </script>
 </body>
 </html>
