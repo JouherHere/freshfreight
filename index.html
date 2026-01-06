@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fresh Freight | Connecting Farms to the World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <style>
     :root {
@@ -15,7 +15,7 @@
       --shadow: 0 8px 24px rgba(34, 199, 129, 0.11);
       --radius: 18px;
       --max-width: 900px;
-      --spacing: 32px;
+      --spacing: 48px;
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
@@ -32,7 +32,7 @@
       background: var(--surface);
       box-shadow: var(--shadow);
       text-align: center;
-      margin-bottom: var(--spacing);
+      margin-bottom: 32px;
       position: relative;
     }
     .logo-img {
@@ -49,14 +49,8 @@
       animation: underlineSlide 0.8s cubic-bezier(.76,.12,.26,.94) forwards;
     }
     @keyframes underlineSlide {
-      from {
-        width: 0;
-        opacity: 0;
-      }
-      to {
-        width: 68px;
-        opacity: 1;
-      }
+      from { width: 0; opacity: 0; }
+      to { width: 68px; opacity: 1; }
     }
     main {
       max-width: var(--max-width);
@@ -88,7 +82,6 @@
       position: relative;
       overflow: hidden;
       padding: 0 10px;
-      box-sizing: border-box;
     }
     .carousel-slide {
       display: none;
@@ -110,186 +103,144 @@
       background: linear-gradient(90deg, #007bff 0%, #24c781 100%);
       border-radius: 10px;
       margin: 0 auto 10px;
-      transform-origin: center;
       animation: underlinePulse 1s ease-out forwards;
     }
     @keyframes underlinePulse {
       0% { transform: scaleX(0.4); opacity: 0; }
-      50% { transform: scaleX(1.1); opacity: 1; }
       100% { transform: scaleX(1); opacity: 1; }
     }
-    #about { display: none; }
 
-    /* Services Grid & Cards */
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    /* Services Grid */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 28px;
-      margin-top: 26px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 24px;
     }
     .service-card {
       background: var(--surface);
       border-radius: 20px;
       box-shadow: 0 8px 32px rgba(36, 199, 129, 0.12);
       padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      cursor: pointer;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      outline: none;
-      touch-action: manipulation;
-      user-select: none;
-    }
-    /* Hover and touch active effect */
-    .service-card:hover,
-    .service-card:focus,
-    .service-card.touch-active {
-      box-shadow: 0 12px 40px rgba(36, 199, 129, 0.28);
-      transform: translateY(-6px);
-    }
-    .service-card:active {
-      transform: scale(1.04);
-      box-shadow: 0 12px 40px rgba(36, 199, 129, 0.38);
-    }
-    .service-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #1b6e48;
-      margin-bottom: 12px;
       text-align: center;
-    }
-    .service-card p {
-      font-size: 1rem;
-      color: #30475e;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-    @media (max-width: 480px) {
-      .services-grid {
-        padding: 0 16px;
-        gap: 20px;
-      }
-      .service-card p {
-        max-width: 100%;
-      }
-    }
-    #contact {
-      background: rgba(255,255,255,0.85);
-      border-radius: var(--radius);
-      padding: 28px 22px;
-      box-shadow: 0 8px 32px rgba(36,199,129,0.13);
-      max-width: 470px;
-      margin: auto;
-      text-align: center;
-    }
-    #contact h2 {
-      font-weight: 700;
-      font-size: 1.37rem;
-      color: var(--primary);
-      margin-bottom: 13px;
-    }
-    #contact p {
-      font-size: 1.02em;
-      color: #444;
-      margin-bottom: 18px;
-    }
-    .contact-info {
-      margin-top: 24px;
-      font-size: 1.02em;
-      color: var(--accent);
-      border-top: 1px solid #e0e7ef;
-      padding-top: 14px;
-      text-align: left;
-    }
-    .contact-info a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.25s;
-    }
-    .contact-info a:hover {
-      color: var(--primary);
-    }
-    form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-      margin-bottom: 2px;
-    }
-    input,
-    textarea {
-      width: 100%;
-      padding: 12px 12px;
-      border: 2px solid #e0e7ef;
-      border-radius: 9px;
-      background: rgba(255, 255, 255, 0.97);
-      font-size: 1rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      resize: vertical;
       transition: all 0.3s ease;
-      color: var(--accent);
     }
-    input::placeholder,
-    textarea::placeholder {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #777;
-      opacity: 1;
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(36, 199, 129, 0.25);
     }
-    input:focus,
-    textarea:focus {
-      border-color: var(--primary);
+    .service-card h3 { color: #1b6e48; margin-bottom: 12px; }
+
+    /* Jobs Section */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .job-card {
       background: #fff;
-      outline: none;
-      box-shadow: 0 0 6px var(--primary);
+      border: 2px solid #eef2f6;
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s;
     }
-    button[type='button'],
-    button[type='submit'] {
-      width: 100%;
-      padding: 13px;
-      font-size: 1.1rem;
+    .job-card:hover { border-color: var(--primary); }
+    .job-badge {
+      align-self: flex-start;
+      background: #e8fbf1;
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
       font-weight: 700;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .job-card h3 { margin: 0 0 10px 0; font-size: 1.25rem; }
+    .job-card ul { 
+      padding-left: 18px; 
+      margin: 0 0 20px 0; 
+      font-size: 0.95rem; 
+      color: #555;
+    }
+    .apply-btn {
+      margin-top: auto;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: background 0.3s;
+    }
+    .apply-btn:hover { background: var(--primary); }
+
+    /* Contact Form */
+    #contact {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 35px 25px;
+      box-shadow: 0 8px 32px rgba(36,199,129,0.13);
+      max-width: 500px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    form { display: flex; flex-direction: column; gap: 15px; }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e7ef;
+      border-radius: 10px;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    #sendWhatsapp {
+      padding: 15px;
+      font-weight: 700;
       color: white;
       background: linear-gradient(90deg, var(--primary) 50%, #ffe984 100%);
-      border-radius: var(--radius);
       border: none;
+      border-radius: var(--radius);
       cursor: pointer;
-      transition: background 0.3s;
-      box-shadow: 0 4px 14px rgba(36, 199, 129, 0.18);
-      margin-top: 6px;
     }
-    button[type='button']:hover,
-    button[type='submit']:hover {
-      background: linear-gradient(90deg, #2d334a 10%, var(--primary) 60%, #ffe984 100%);
+    .contact-info {
+      margin-top: 25px;
+      text-align: left;
+      font-size: 0.95rem;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
     }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 18px;
-      color: #777;
-      margin-top: 24px;
-    }
+    footer { text-align: center; padding: 40px; color: #777; font-size: 0.9rem; }
   </style>
 </head>
 <body>
+
   <header>
     <img src="fresh-freight-logo.png" alt="Fresh Freight Logo" class="logo-img" />
     <div class="logo-underline"></div>
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero" id="home">
       <h1>Brightening Global Trade</h1>
-      <div class="carousel-text" aria-live="polite" aria-atomic="true">
+      <div class="carousel-text">
         <div class="carousel-slide active">Connecting growers and buyers with premium produce.</div>
         <div class="carousel-slide">Speedy and reliable logistics for fruits and vegetables.</div>
         <div class="carousel-slide">Committed to freshness, quality, and transparency.</div>
@@ -303,42 +254,68 @@
       <div class="underline-below-carousel"></div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about"></section>
-
-    <!-- SERVICES -->
     <section id="services">
+      <div class="section-header">
+        <h2>Our Services</h2>
+      </div>
       <div class="services-grid">
-        <article class="service-card" tabindex="0">
+        <article class="service-card">
           <h3>Global Sourcing</h3>
           <p>We connect with trusted growers worldwide for premium produce.</p>
         </article>
-
-        <article class="service-card" tabindex="0">
+        <article class="service-card">
           <h3>Fresh Produce Supply</h3>
           <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
         </article>
-        <article class="service-card" tabindex="0">
-          <h3>Meat, Dairy & Seafood</h3>
-          <p>Safe, fresh, and reliable supply of meat, dairy, and seafood products.</p>
+        <article class="service-card">
+          <h3>Meat & Dairy</h3>
+          <p>Safe, fresh, and reliable supply of meat, dairy, and seafood.</p>
         </article>
-        <article class="service-card" tabindex="0">
+        <article class="service-card">
           <h3>Packaged Goods</h3>
-          <p>Export-ready packaged items for diverse international markets.</p>
+          <p>Export-ready items for diverse international markets.</p>
         </article>
-
-
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <section id="jobs">
+      <div class="section-header">
+        <h2>We are Hiring in UAE</h2>
+        <p>Join our growing team in the Middle East.</p>
+      </div>
+      <div class="jobs-grid">
+
+        <div class="job-card">
+          <span class="job-badge">UAE • Regional</span>
+          <h3>Driver</h3>
+          <ul>
+            <li>Valid UAE Driving License</li>
+            <li>Route knowledge (UAE)</li>
+            <li>Clean driving record</li>
+          </ul>
+          <a href="#contact" class="apply-btn" onclick="setSubject('Driver Job Application')">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+          <span class="job-badge">UAE • Warehouse</span>
+          <h3>Packing Staff</h3>
+          <ul>
+            <li>Quality control & sorting</li>
+            <li>Fast-paced environment</li>
+            <li>Team player attitude</li>
+          </ul>
+          <a href="#contact" class="apply-btn" onclick="setSubject('Packing Staff Application')">Apply Now</a>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <h2>Let’s Connect</h2>
-      <p>Got a question or need a quote? Send us a message below.</p>
+      <p>Got a question or applying for a job? Message us.</p>
       <form id="contactForm" onsubmit="return false;">
-        <input type="text" id="name" name="name" placeholder="Full Name" required />
-        <input type="email" id="email" name="email" placeholder="Email Address" required />
-        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <textarea id="message" rows="4" placeholder="How can we help you?" required></textarea>
         <button type="button" id="sendWhatsapp">Send via WhatsApp</button>
       </form>
       <div class="contact-info">
@@ -352,77 +329,39 @@
   <footer>&copy; 2025 Fresh Freight. All Rights Reserved.</footer>
 
   <script>
+    // Carousel Logic
     (function () {
       const slides = document.querySelectorAll('.carousel-slide');
       let currentIndex = 0;
-      const intervalTime = 5000;
-      let interval;
-      const underline = document.querySelector('.underline-below-carousel');
-
       function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === index);
-        });
-        underline.style.animation = 'none';
-        underline.offsetHeight;
-        underline.style.animation = 'underlinePulse 1s ease-out forwards';
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
       }
-      function nextSlide() {
+      setInterval(() => {
         currentIndex = (currentIndex + 1) % slides.length;
         showSlide(currentIndex);
-      }
-      function startCarousel() {
-        interval = setInterval(nextSlide, intervalTime);
-      }
-      function stopCarousel() {
-        clearInterval(interval);
-      }
-
-      const carouselText = document.querySelector('.carousel-text');
-      carouselText.addEventListener('mouseenter', stopCarousel);
-      carouselText.addEventListener('mouseleave', startCarousel);
-      carouselText.addEventListener('touchstart', stopCarousel);
-      carouselText.addEventListener('touchend', startCarousel);
-
-      showSlide(currentIndex);
-      startCarousel();
+      }, 5000);
     })();
 
-    // Touch-active class toggle on service cards for mobile tap visual feedback
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('touchstart', () => {
-        card.classList.add('touch-active');
-      });
-      card.addEventListener('touchend', () => {
-        setTimeout(() => {
-          card.classList.remove('touch-active');
-        }, 300);
-      });
-      card.addEventListener('touchcancel', () => {
-        card.classList.remove('touch-active');
-      });
-    });
+    // Set Message Subject when clicking "Apply Now"
+    function setSubject(jobTitle) {
+      const messageBox = document.getElementById('message');
+      messageBox.value = "I am interested in the " + jobTitle + " position. Here are my details: ";
+      messageBox.focus();
+    }
 
-    // WhatsApp sending functionality
+    // WhatsApp logic
     document.getElementById('sendWhatsapp').onclick = function () {
-      var name = encodeURIComponent(document.getElementById('name').value.trim());
-      var email = encodeURIComponent(document.getElementById('email').value.trim());
-      var message = encodeURIComponent(document.getElementById('message').value.trim());
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const message = encodeURIComponent(document.getElementById('message').value.trim());
 
       if (!name || !email || !message) {
-        alert('Please fill in all fields before sending.');
+        alert('Please fill in all fields.');
         return;
       }
 
-      var whatsappMsg =
-        'Name: ' + name + '%0A' +
-        'Email: ' + email + '%0A' +
-        'Message: ' + message;
-
-      var whatsappNumber = '919746998363';
-      var url = 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMsg;
-
-      window.open(url, '_blank');
+      const whatsappMsg = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+      window.open(`https://wa.me/919746998363?text=${whatsappMsg}`, '_blank');
     };
   </script>
 </body>
