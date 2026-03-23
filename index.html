@@ -113,34 +113,79 @@
     /* Section Headers */
     .section-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     .section-header h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
     /* Services Grid */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
+      gap: 32px;
+      margin-top: 20px;
     }
     .service-card {
-      background: var(--surface);
-      border-radius: 20px;
+      background: linear-gradient(135deg, var(--surface) 0%, #f8fdf9 100%);
+      border-radius: 24px;
       box-shadow: 0 8px 32px rgba(36, 199, 129, 0.12);
-      padding: 28px 24px;
+      padding: 32px 28px;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(36, 199, 129, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, #ffe984 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover::before {
+      transform: scaleX(1);
     }
     .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(36, 199, 129, 0.25);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(36, 199, 129, 0.2);
+      border-color: rgba(36, 199, 129, 0.3);
     }
-    .service-card h3 { color: #1b6e48; margin-bottom: 12px; }
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+    }
+    .service-card h3 { 
+      color: #1b6e48; 
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .service-card p {
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
 
     /* Contact Form */
     #contact {
@@ -210,21 +255,26 @@
     <section id="services">
       <div class="section-header">
         <h2>Our Services</h2>
+        <p>Comprehensive solutions for your fresh produce and goods logistics</p>
       </div>
       <div class="services-grid">
         <article class="service-card">
+          <div class="service-icon">🌍</div>
           <h3>Global Sourcing</h3>
           <p>We connect with trusted growers worldwide for premium produce.</p>
         </article>
         <article class="service-card">
+          <div class="service-icon">🥕</div>
           <h3>Fresh Produce Supply</h3>
           <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
         </article>
         <article class="service-card">
+          <div class="service-icon">🥩</div>
           <h3>Meat & Dairy</h3>
           <p>Safe, fresh, and reliable supply of meat, dairy, and seafood.</p>
         </article>
         <article class="service-card">
+          <div class="service-icon">📦</div>
           <h3>Packaged Goods</h3>
           <p>Export-ready items for diverse international markets.</p>
         </article>
