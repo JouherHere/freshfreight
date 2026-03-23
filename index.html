@@ -142,53 +142,6 @@
     }
     .service-card h3 { color: #1b6e48; margin-bottom: 12px; }
 
-    /* Jobs Section */
-    .jobs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .job-card {
-      background: #fff;
-      border: 2px solid #eef2f6;
-      border-radius: var(--radius);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.3s;
-    }
-    .job-card:hover { border-color: var(--primary); }
-    .job-badge {
-      align-self: flex-start;
-      background: #e8fbf1;
-      color: var(--primary);
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-    .job-card h3 { margin: 0 0 10px 0; font-size: 1.25rem; }
-    .job-card ul { 
-      padding-left: 18px; 
-      margin: 0 0 20px 0; 
-      font-size: 0.95rem; 
-      color: #555;
-    }
-    .apply-btn {
-      margin-top: auto;
-      text-decoration: none;
-      background: var(--accent);
-      color: white;
-      text-align: center;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      transition: background 0.3s;
-    }
-    .apply-btn:hover { background: var(--primary); }
-
     /* Contact Form */
     #contact {
       background: #fff;
@@ -278,40 +231,9 @@
       </div>
     </section>
 
-    <section id="jobs">
-      <div class="section-header">
-        <h2>We are Hiring in UAE</h2>
-        <p>Join our growing team in the Middle East.</p>
-      </div>
-      <div class="jobs-grid">
-
-        <div class="job-card">
-          <span class="job-badge">UAE • Regional</span>
-          <h3>Driver</h3>
-          <ul>
-            <li>Valid UAE Driving License</li>
-            <li>Route knowledge (UAE)</li>
-            <li>Clean driving record</li>
-          </ul>
-          <a href="#contact" class="apply-btn" onclick="setSubject('Driver Job Application')">Apply Now</a>
-        </div>
-
-        <div class="job-card">
-          <span class="job-badge">UAE • Al Ain</span>
-          <h3>Packing Staff</h3>
-          <ul>
-            <li>Quality control & sorting</li>
-            <li>Fast-paced environment</li>
-            <li>Team player attitude</li>
-          </ul>
-          <a href="#contact" class="apply-btn" onclick="setSubject('Packing Staff Application')">Apply Now</a>
-        </div>
-      </div>
-    </section>
-
     <section id="contact">
       <h2>Let’s Connect</h2>
-      <p>Got a question or applying for a job? Message us.</p>
+      <p>Got a question? Message us.</p>
       <form id="contactForm" onsubmit="return false;">
         <input type="text" id="name" placeholder="Full Name" required />
         <input type="email" id="email" placeholder="Email Address" required />
@@ -342,13 +264,6 @@
         showSlide(currentIndex);
       }, 5000);
     })();
-
-    // Set Message Subject when clicking "Apply Now"
-    function setSubject(jobTitle) {
-      const messageBox = document.getElementById('message');
-      messageBox.value = "I am interested in the " + jobTitle + " position. Here are my details: ";
-      messageBox.focus();
-    }
 
     // WhatsApp logic
     document.getElementById('sendWhatsapp').onclick = function () {
