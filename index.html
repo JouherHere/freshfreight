@@ -132,59 +132,71 @@
     /* Services Grid */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
     }
     .service-card {
-      background: linear-gradient(135deg, var(--surface) 0%, #f8fdf9 100%);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(36, 199, 129, 0.12);
-      padding: 32px 28px;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid rgba(36, 199, 129, 0.1);
-      position: relative;
+      background: rgba(255,255,255,0.98);
+      border-radius: 28px;
+      border: 1px solid rgba(38, 95, 94, 0.08);
+      box-shadow: 0 18px 40px rgba(36, 199, 129, 0.08);
+      padding: 34px 30px;
       overflow: hidden;
+      position: relative;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.45s ease;
     }
     .service-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary) 0%, #ffe984 100%);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary), #80e0a8);
+      border-radius: 0 12px 12px 0;
     }
-    .service-card:hover::before {
-      transform: scaleX(1);
+    .service-card::after {
+      content: attr(data-step);
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 12px 24px rgba(36, 199, 129, 0.12);
     }
     .service-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(36, 199, 129, 0.2);
-      border-color: rgba(36, 199, 129, 0.3);
+      transform: translateY(-10px);
+      box-shadow: 0 28px 60px rgba(36, 199, 129, 0.18);
     }
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    .service-card:hover .service-icon {
-      transform: scale(1.1);
-    }
-    .service-card h3 { 
-      color: #1b6e48; 
-      margin-bottom: 12px;
-      font-size: 1.3rem;
-      font-weight: 700;
+    .service-card h3 {
+      color: #163c2f;
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.2;
     }
     .service-card p {
-      color: #555;
-      line-height: 1.6;
+      color: #4f645d;
+      line-height: 1.8;
       margin: 0;
+      font-size: 1rem;
+    }
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-item.reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Contact Form */
@@ -257,25 +269,21 @@
         <h2>Our Services</h2>
       </div>
       <div class="services-grid">
-        <article class="service-card">
-          <div class="service-icon">🌍</div>
+        <article class="service-card reveal-item" data-step="01">
           <h3>Global Sourcing</h3>
-          <p>We connect with trusted growers worldwide for premium produce.</p>
+          <p>We partner with trusted growers around the world to bring premium produce to international markets.</p>
         </article>
-        <article class="service-card">
-          <div class="service-icon">🥕</div>
+        <article class="service-card reveal-item" data-step="02">
           <h3>Fresh Produce Supply</h3>
-          <p>Consistently deliver seasonal fruits and vegetables, always fresh.</p>
+          <p>Seasonal fruits and vegetables are handled with care at every step for reliable, high-quality delivery.</p>
         </article>
-        <article class="service-card">
-          <div class="service-icon">🥩</div>
+        <article class="service-card reveal-item" data-step="03">
           <h3>Meat & Dairy</h3>
-          <p>Safe, fresh, and reliable supply of meat, dairy, and seafood.</p>
+          <p>Cold-chain transport and trusted compliance ensure safe delivery for meat, dairy, and chilled goods.</p>
         </article>
-        <article class="service-card">
-          <div class="service-icon">📦</div>
+        <article class="service-card reveal-item" data-step="04">
           <h3>Packaged Goods</h3>
-          <p>Export-ready items for diverse international markets.</p>
+          <p>Ready-to-ship product packaging and export preparation for markets across the globe.</p>
         </article>
       </div>
     </section>
@@ -313,6 +321,19 @@
         showSlide(currentIndex);
       }, 5000);
     })();
+
+    // Reveal animation for service cards
+    const revealItems = document.querySelectorAll('.reveal-item');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -80px 0px' });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
 
     // WhatsApp logic
     document.getElementById('sendWhatsapp').onclick = function () {
